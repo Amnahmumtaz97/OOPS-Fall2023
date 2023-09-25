@@ -5,7 +5,7 @@ public class Deck {
     Card[] deck = new Card[52];
 
     public Deck() {
-        String suits[] = { "Clubs", "Hearts", "Diamonds", "Spades" };
+        String suits[] = { "Clubs","Hearts", "Diamonds", "Spades" };
         String rank[] = { "Ace", "2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King" };
 
         int counter = 0;
