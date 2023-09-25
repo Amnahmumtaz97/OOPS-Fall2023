@@ -1,4 +1,4 @@
-package week1;
+package week2;
 
 public class RecTest {
     public static void main(String[] args) {
