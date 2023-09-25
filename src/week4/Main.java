@@ -20,6 +20,9 @@ public class Main {
         card.shuffle();
         System.out.println(card);
 
+        Player p = new Player();
+        p.distribute(card); // Distribute the cards
+        System.out.println(p.toString()); // Print the players' hands
 
     }
 
