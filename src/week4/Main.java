@@ -21,8 +21,9 @@ public class Main {
         System.out.println(card);
 
         Player p = new Player();
-        p.distribute(card); // Distribute the cards
-        System.out.println(p.toString()); // Print the players' hands
+        p.distribute(card); //to distribute the cards
+        //print the cards assigned to players
+        System.out.println(p.toString());
 
     }
 
