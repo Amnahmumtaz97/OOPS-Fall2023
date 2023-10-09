@@ -2,7 +2,7 @@ package medicstore;
 
 public class Medicine extends Product {
     private final String manufacturer;
-    private int stock; // Add stock for each medicine
+    private int stock;
 
 
     public Medicine(String name, double price, int productID,String manufacturer, int stock) {

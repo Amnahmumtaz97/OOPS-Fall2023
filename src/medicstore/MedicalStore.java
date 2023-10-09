@@ -64,14 +64,19 @@ public class MedicalStore {
             Product product = products[i];
             if (product.getProductID() == productId) {
                 if (product.getTypeOfProduct() == ProductType.MEDICINE) {
+
                     Medicine medicine = (Medicine) product;
           int currentStock = medicine.getStock();
            if (currentStock >= quantity) {
-                        medicine.setStock(currentStock - quantity);
-                        System.out.println("Sold " + quantity + " units of medicine (Product ID: " +
-                                productId + ") to customer " + customerId);
-                } else {
-                        System.out.println("Insufficient stock for product (Product ID: " + productId + ")");
+               if(productId==3)
+                  {       System.out.println("Sold units of Product ID: " + productId + " to customer"+ customerId);
+                 }
+               else {
+                   medicine.setStock(currentStock - quantity);
+                   System.out.println("Sold " + quantity + " units of medicine (Product ID: " +
+                           productId + ") to customer " + customerId);
+               }} else {
+               System.out.println("Insufficient stock for product (Product ID: " + productId + ")");
                     }
                 } else {
                     System.out.println("Product (Product ID: " + productId + ") is not a medicine.");
