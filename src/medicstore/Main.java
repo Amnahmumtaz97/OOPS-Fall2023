@@ -91,6 +91,7 @@ public class Main {
             quantity = scanner.nextInt();
         }
 
+
         store.sellMedicine(productId, customer3.getCustomerId(), quantity);
 
         // Customer 4 attempts to purchase medicine (insufficient stock)
@@ -112,7 +113,6 @@ public class Main {
         System.out.println();
         store.displayProducts();
 
-        // Close the scanner
         scanner.close();
     }
 }

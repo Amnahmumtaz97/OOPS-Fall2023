@@ -3,11 +3,11 @@ package medicstore;
 public class Customer {
     private final int customerId;
     private String name;
-
-    public Customer() {
-        this.customerId = 001;
-        this.name = "amnah";
-    }
+//
+//    public Customer() {
+//        this.customerId = 001;
+//        this.name = "amnah";
+//    }
 
     //default constructor is linked to toString
     @Override

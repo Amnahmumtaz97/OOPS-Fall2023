@@ -65,8 +65,8 @@ public class MedicalStore {
             if (product.getProductID() == productId) {
                 if (product.getTypeOfProduct() == ProductType.MEDICINE) {
                     Medicine medicine = (Medicine) product;
-                    int currentStock = medicine.getStock();
-                    if (currentStock >= quantity) {
+          int currentStock = medicine.getStock();
+           if (currentStock >= quantity) {
                         medicine.setStock(currentStock - quantity);
                         System.out.println("Sold " + quantity + " units of medicine (Product ID: " +
                                 productId + ") to customer " + customerId);
@@ -75,7 +75,9 @@ public class MedicalStore {
                     }
                 } else {
                     System.out.println("Product (Product ID: " + productId + ") is not a medicine.");
+                    System.out.println("Product (Product ID: " + productId + ") sold to customer"+customerId);
                 }
+
                 return;
             }
         }
