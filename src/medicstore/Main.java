@@ -23,6 +23,7 @@ public class Main {
 
         store.addProduct(m1); store.addProduct(m2);
         store.addProduct(m3); store.addProduct(p4);
+        store.addProduct(m4);
 
         store.addCustomer(customer1); store.addCustomer(customer2);
         store.addCustomer(customer3); store.addCustomer(customer4);
@@ -36,7 +37,6 @@ public class Main {
         System.out.println();
         Scanner scanner = new Scanner(System.in);
 
-        //take inputs from customers one by one.
         Customer[] customers = {customer1, customer2, customer3, customer4};
         for (Customer customer : customers) {
             System.out.println();
@@ -54,11 +54,12 @@ public class Main {
             store.sellMedicine(productId, customer.getCustomerId(), quantity);
         }
 
-        //Display updated product stock
         System.out.println();
         System.out.println("Updated Product Stock:");
         System.out.println();
         store.displayProducts();
+
+
 
         scanner.close();
     }
