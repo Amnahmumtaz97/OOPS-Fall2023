@@ -2,21 +2,28 @@ package week6;
 
 
 class Furniture extends Product {
-    private String category;
-    private String subCategory;
+    private String material;
+    private int dimension;
 
-    public Furniture(int id, String name, double price, int stockQuantity, String category, String subCategory) {
+    public Furniture(int id, String name, double price, int stockQuantity, String material, int dimension) {
         super(id, name, price, stockQuantity);
-        this.category = category;
-        this.subCategory = subCategory;
+        this.material = material;
+        this.dimension = dimension;
     }
 
-    public String getCategory() {
-        return category;
+    public String getMaterial() {
+        return material;
     }
 
-    public String getSubCategory() {
-        return subCategory;
+    public void setMaterial(String material) {
+        this.material = material;
     }
 
+    public int getDimension() {
+        return dimension;
+    }
+
+    public void setDimension(int dimension) {
+        this.dimension = dimension;
+    }
 }

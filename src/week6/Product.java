@@ -13,6 +13,12 @@ class Product {
         this.stockQuantity = stockQuantity;
     }
 
+    Product(){
+        this.id=1;
+        this.name="master";
+        this.price=80.2;
+        this.stockQuantity=100;
+    }
     public int getId() {
         return id;
     }
@@ -21,6 +27,12 @@ class Product {
         return name;
     }
 
+    @Override
+    public String toString() {
+        return String.format("ID: %d, Name: %s, Price: %.2f, Stock Quantity: %d", id, name, price, stockQuantity);
+    }
+
+
     public double getPrice() {
         return price;
     }
@@ -28,5 +40,6 @@ class Product {
     public int getStockQuantity() {
         return stockQuantity;
     }
+
 }
 

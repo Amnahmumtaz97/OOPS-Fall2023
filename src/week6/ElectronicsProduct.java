@@ -1,21 +1,34 @@
 package week6;
 
 class ElectronicsProduct extends Product {
-    private String category;
-    private String subCategory;
 
-    public ElectronicsProduct(int id, String name, double price, int stockQuantity, String category, String subCategory) {
+    private int powerConsumption;
+    private int warranty;
+
+
+    public ElectronicsProduct(int id, String name, double price, int stockQuantity, int powerConsumption, int warranty) {
         super(id, name, price, stockQuantity);
-        this.category = category;
-        this.subCategory = subCategory;
+        this.powerConsumption = powerConsumption;
+        this.warranty = warranty;
     }
 
-    public String getCategory() {
-        return category;
+    public ElectronicsProduct(int powerConsumption, int warranty) {
+
     }
 
-    public String getSubCategory() {
-        return subCategory;
+    public int getPowerConsumption() {
+        return powerConsumption;
     }
 
+    public void setPowerConsumption(int powerConsumption) {
+        this.powerConsumption = powerConsumption;
+    }
+
+    public int getWarranty() {
+        return warranty;
+    }
+
+    public void setWarranty(int warranty) {
+        this.warranty = warranty;
+    }
 }

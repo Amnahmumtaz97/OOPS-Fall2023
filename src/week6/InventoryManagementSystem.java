@@ -22,7 +22,9 @@ class InventoryManagementSystem {
         for (int i = 0; i < productCount; i++) {
             if (products[i].getId() == updatedProduct.getId()) {
                 products[i] = updatedProduct;
-                return;
+            }
+            else {
+                System.out.println("wrong id input");
             }
         }
     }
