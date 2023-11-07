@@ -1,141 +1,42 @@
 package week6;
-
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        InventoryManagementSystem ims = new InventoryManagementSystem(100);
         Scanner scanner = new Scanner(System.in);
-        InventoryManagementSystem inventorySystem = new InventoryManagementSystem(10);
 
-        while (true) {
-            System.out.println("Options:");
-            System.out.println("1. Add a product");
-            System.out.println("2. Update a product");
-            System.out.println("3. Remove a product");
-            System.out.println("4. Retrieve a product");
-            System.out.println("5. Exit");
+        int option = -1;
 
-            int choice = scanner.nextInt();
-            scanner.nextLine(); // Consume the newline character
+        while (option != 0) {
+            System.out.println("Select an option:");
+            System.out.println("1. Add Product");
+            System.out.println("2. Update Product");
+            System.out.println("3. Remove Product");
+            System.out.println("4. Retrieve Product");
+            System.out.println("0. Exit");
+            option = scanner.nextInt();
 
-            switch (choice) {
+            switch (option) {
                 case 1:
-                    System.out.println("Enter product details:");
-                    System.out.print("ID: ");
-                    int id = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
-                    System.out.print("Name: ");
-                    String name = scanner.nextLine();
-                    System.out.print("Price: ");
-                    double price = scanner.nextDouble();
-                    scanner.nextLine(); // Consume the newline character
-                    System.out.print("Stock Quantity: ");
-                    int stockQuantity = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
-                    System.out.print("Category: ");
-                    String category = scanner.nextLine();
-
-                    Product newProduct;
-
-                    if (category.equals("Electronics")) {
-                        System.out.print("Power Consumption: ");
-                        int powerConsumption = scanner.nextInt();
-                        System.out.print("Warranty: ");
-                        int warranty = scanner.nextInt();
-                        newProduct = new ElectronicsProduct(id, name, price, stockQuantity, powerConsumption, warranty);
-                    } else if (category.equals("Furniture")) {
-                        System.out.print("Material: ");
-                        String material = scanner.nextLine();
-                        System.out.print("Dimensions: ");
-                        int dimensions = scanner.nextInt();
-                        newProduct = new Furniture(id, name, price, stockQuantity, material, dimensions);
-                    } else if (category.equals("Groceries")) {
-                        System.out.print("Expiration Date: ");
-                        String expiryDate = scanner.nextLine();
-                        System.out.print("Nutrition Value: ");
-                        int nutritionValue = scanner.nextInt();
-                        newProduct = new GroceriesProduct(id, name, price, stockQuantity, expiryDate, nutritionValue);
-                    } else {
-                        System.out.println("Invalid category");
-                        continue;
-                    }
-
-                    inventorySystem.addProduct(newProduct);
+                    ims.addProduct(new ElectronicsProduct(1, "Laptop", 999.99, 10, 65, 24));
+                    ims.addProduct(new Furniture(2, "Sofa", 499.99, 5, "Leather", 3));
+                    ims.addProduct(new GroceriesProduct(3, "Banana", 0.49, 100, "02/09/23", 50));
                     break;
-
                 case 2:
-                    System.out.println("Enter product details for update:");
-                    System.out.print("ID: ");
-                    int updateId = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
-                    System.out.print("Name: ");
-                    String updateName = scanner.nextLine();
-                    System.out.print("Price: ");
-                    double updatePrice = scanner.nextDouble();
-                    scanner.nextLine(); // Consume the newline character
-                    System.out.print("Stock Quantity: ");
-                    int updateStockQuantity = scanner.nextInt();
-                    scanner.nextLine(); // Consume the newline character
-                    System.out.print("Category: ");
-                    String updateCategory = scanner.nextLine();
+                    ims.updateProduct(3,new GroceriesProduct(3, "Almond", 0.49, 100, "02/09/23", 50));
 
-                    Product updatedProduct;
-
-                    if (updateCategory.equals("Electronics")) {
-                        System.out.print("Power Consumption: ");
-                        int updatePowerConsumption = scanner.nextInt();
-                        System.out.print("Warranty: ");
-                        int updateWarranty = scanner.nextInt();
-                        updatedProduct = new ElectronicsProduct(updateId, updateName, updatePrice, updateStockQuantity, updatePowerConsumption, updateWarranty);
-                    } else if (updateCategory.equals("Furniture")) {
-                        System.out.print("Material: ");
-                        String updateMaterial = scanner.nextLine();
-                        System.out.print("Dimensions: ");
-                        int updateDimensions = scanner.nextInt();
-                        updatedProduct = new Furniture(updateId, updateName, updatePrice, updateStockQuantity, updateMaterial, updateDimensions);
-                    } else if (updateCategory.equals("Groceries")) {
-                        System.out.print("Expiration Date: ");
-                        String updateExpiryDate = scanner.nextLine();
-                        System.out.print("Nutrition Value: ");
-                        int updateNutritionValue = scanner.nextInt();
-                        updatedProduct = new GroceriesProduct(updateId, updateName, updatePrice, updateStockQuantity, updateExpiryDate, updateNutritionValue);
-                    } else {
-                        System.out.println("Invalid category");
-                        continue;
-                    }
-
-                    inventorySystem.updateProduct(updatedProduct);
+                    ims.updateProduct(1, new ElectronicsProduct(1, "Laptop Pro", 1099.99, 15, 75, 36));
                     break;
-
                 case 3:
-                    System.out.print("Enter the ID of the product to remove: ");
-                    int productId = scanner.nextInt();
-                    inventorySystem.removeProduct(productId);
+                    ims.removeProduct(2);
                     break;
-
                 case 4:
-                    System.out.print("Enter the ID of the product to retrieve: ");
-                    int retrieveId = scanner.nextInt();
-                    Product retrievedProduct = inventorySystem.getProduct(retrieveId);
-                    if (retrievedProduct != null) {
-                        System.out.println("Retrieved Product: " + retrievedProduct);
-                        if (retrievedProduct instanceof ElectronicsProduct) {
-                            ElectronicsProduct e = (ElectronicsProduct) retrievedProduct;
-                            System.out.println("Power Consumption: " + e.getPowerConsumption());
-                            System.out.println("Warranty: " + e.getWarranty());
-                        }
-                    } else {
-                        System.out.println("Product not found.");
-                    }
+                    ims.retrieveProduct(3);
                     break;
-
-                case 5:
-                    System.out.println("Exiting the program.");
-                    System.exit(0);
-
-                default:
-                    System.out.println("Invalid choice. Please enter a valid option.");
             }
         }
+
+        scanner.close();
     }
 }

@@ -18,36 +18,53 @@ class InventoryManagementSystem {
         }
     }
 
-    public void updateProduct(Product updatedProduct) {
-        for (int i = 0; i < productCount; i++) {
-            if (products[i].getId() == updatedProduct.getId()) {
-                products[i] = updatedProduct;
-            }
-            else {
-                System.out.println("wrong id input");
-            }
+    public void updateProduct(int id, Product newProduct) {
+        int index = findProductIndexById(id);
+        if (index != -1) {
+            products[index] = newProduct;
+        } else {
+            System.out.println("Product not found.");
         }
     }
 
     public void removeProduct(int productId) {
-        for (int i = 0; i < productCount; i++) {
-            if (products[i].getId() == productId) {
-                for (int j = i; j < productCount - 1; j++) {
-                    products[j] = products[j + 1];
-                }
-                products[productCount - 1] = null;
-                productCount--;
-                return;
-            }
+        int index = findProductIndexById(productId);
+        if (index != -1) {
+            removeProductAtIndex(index);
+        } else {
+            System.out.println("Product not found.");
         }
     }
 
-    public Product getProduct(int productId) {
+    public void retrieveProduct(int productId) {
+        int index = findProductIndexById(productId);
+        if (index != -1) {
+            Product retrievedProduct = products[index];
+            System.out.println(retrievedProduct);
+//            if (retrievedProduct instanceof ElectronicsProduct) {
+//                ElectronicsProduct e = (ElectronicsProduct) retrievedProduct;
+//                System.out.println("Power Consumption: " + e.getPowerConsumption());
+//                System.out.println("Warranty: " + e.getWarranty());
+//            }
+        } else {
+            System.out.println("Product not found.");
+        }
+    }
+
+    private int findProductIndexById(int productId) {
         for (int i = 0; i < productCount; i++) {
             if (products[i].getId() == productId) {
-                return products[i];
+                return i;
             }
         }
-        return null;
+        return -1; // Product not found
+    }
+
+    private void removeProductAtIndex(int index) {
+        for (int j = index; j < productCount - 1; j++) {
+            products[j] = products[j + 1];
+        }
+        products[productCount - 1] = null;
+        productCount--;
     }
 }

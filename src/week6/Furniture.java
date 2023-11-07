@@ -11,6 +11,7 @@ class Furniture extends Product {
         this.dimension = dimension;
     }
 
+
     public String getMaterial() {
         return material;
     }

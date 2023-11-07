@@ -12,9 +12,6 @@ class ElectronicsProduct extends Product {
         this.warranty = warranty;
     }
 
-    public ElectronicsProduct(int powerConsumption, int warranty) {
-
-    }
 
     public int getPowerConsumption() {
         return powerConsumption;
