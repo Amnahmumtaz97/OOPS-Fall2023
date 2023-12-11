@@ -14,12 +14,13 @@ class Product {
         this.stockQuantity = stockQuantity;
     }
 
-    Product(){
-        this.id=1;
-        this.name="master";
-        this.price=80.2;
-        this.stockQuantity=100;
-    }
+//    Product(){
+//        this.id=1;
+//        this.name="master";
+//        this.price=80.2;
+//        this.stockQuantity=100;
+//    }
+
     public int getId() {
         return id;
     }

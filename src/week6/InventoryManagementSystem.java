@@ -4,11 +4,12 @@ class InventoryManagementSystem {
     private Product[] products;
     private int productCount;
 
+
+
     public InventoryManagementSystem(int capacity) {
         products = new Product[capacity];
         productCount = 0;
     }
-
     public void addProduct(Product product) {
         if (productCount < products.length) {
             products[productCount] = product;
@@ -21,7 +22,17 @@ class InventoryManagementSystem {
     public void updateProduct(int id, Product newProduct) {
         int index = findProductIndexById(id);
         if (index != -1) {
-            products[index] = newProduct;
+            if (newProduct instanceof GroceriesProduct) {
+
+                GroceriesProduct currentProduct = (GroceriesProduct) products[index];
+                GroceriesProduct newGroceriesProduct = (GroceriesProduct) newProduct;
+
+                // Update specific properties for GroceriesProduct
+                currentProduct.setDate(newGroceriesProduct.getDate());
+                currentProduct.setNutritionValue(newGroceriesProduct.getNutritionValue());
+            } else {
+                products[index] = newProduct;
+            }
         } else {
             System.out.println("Product not found.");
         }
@@ -41,11 +52,16 @@ class InventoryManagementSystem {
         if (index != -1) {
             Product retrievedProduct = products[index];
             System.out.println(retrievedProduct);
-//            if (retrievedProduct instanceof ElectronicsProduct) {
-//                ElectronicsProduct e = (ElectronicsProduct) retrievedProduct;
-//                System.out.println("Power Consumption: " + e.getPowerConsumption());
-//                System.out.println("Warranty: " + e.getWarranty());
-//            }
+            if (retrievedProduct instanceof ElectronicsProduct) {
+                ElectronicsProduct e = (ElectronicsProduct) retrievedProduct;
+                System.out.println("Power Consumption: " + e.getPowerConsumption());
+                System.out.println("Warranty: " + e.getWarranty());
+            }
+            else if (retrievedProduct instanceof Furniture) {
+                Furniture f = (Furniture) retrievedProduct;
+                System.out.println("Material: " + f.getMaterial());
+                System.out.println("Dimension: " + f.getDimension());
+            }
         } else {
             System.out.println("Product not found.");
         }
